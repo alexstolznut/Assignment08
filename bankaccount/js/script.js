@@ -13,27 +13,6 @@ var depositPrompt = 0;
 var withdrawalPrompt = 0;
 
 
-//function thisPrompt() {
-//    "use strict";
-//
-//    if (this.id === "name") {
-//        namePrompt = window.prompt('Please enter your name');
-//        bankAccount(namePrompt).getOwnerName();
-//        //        bankAccount(namePrompt);
-//        //        return namePrompt;
-//    } else if (this.id === "deposit") {
-//        window.console.log(this.id);
-//        depositPrompt = parseFloat(window.prompt("How much would you like to deposit?"));
-//        bankAccount().deposit(depositPrompt);
-////        bankAccount().getBalance();
-//        return depositPrompt;
-//    } else if (this.id === "withdrawal") {
-//        window.console.log(this.id);
-//        withdrawalPrompt = Number(window.prompt("How much would like to withdrawal?"));
-//        bankAccount().withdrawl(withdrawalPrompt);
-//        bankAccount().getBalance();
-//    }
-//}
 
 var bankAccount = function (ownerName) {
     "use strict";
@@ -42,25 +21,6 @@ var bankAccount = function (ownerName) {
     owner = ownerName;
     balance = 0;
 
-
-//        thisPrompt: function () {
-//            "use strict";
-//
-//            if (this.id === "name") {
-//                namePrompt = window.prompt('Please enter your name');
-//                bankAccount(namePrompt).getOwnerName();
-//            } else if (this.id === "deposit") {
-//                window.console.log(this.id);
-//                depositPrompt = parseFloat(window.prompt("How much would you like to deposit?"));
-//                bankMethods.deposit(depositPrompt);
-//                //            return depositPrompt;
-//            } else if (this.id === "withdrawal") {
-//                window.console.log(this.id);
-//                withdrawalPrompt = Number(window.prompt("How much would like to withdrawal?"));
-//                bankAccount().withdrawl(withdrawalPrompt);
-//                bankAccount().getBalance();
-//            }
-//        }
 
     bankMethods = {
 
@@ -84,7 +44,7 @@ var bankAccount = function (ownerName) {
         },
 
         getBalance: function () {
-            userDiv.appendChild(h2).innerHTML = balance.toString();
+            userDiv.appendChild(h2).innerHTML = "Balance: " + balance.toString();
             return balance;
         },
 
@@ -110,7 +70,7 @@ var bankAccount = function (ownerName) {
             bankMethods.getBalance();
         },
 
-        getOwnerName: function () {
+        getOwnerName: function (owner) {
             window.console.log(owner);
             userDiv.appendChild(h1).innerHTML = "Name: " + owner;
             return owner;
@@ -120,10 +80,11 @@ var bankAccount = function (ownerName) {
 }
 
 
+var newBankAccount = new bankAccount();
 
-newBankAccount.bankAccount("Alex");
 $("name").addEventListener("click", function(){
     var namePrompt = window.prompt("Please enter your name");
+    newBankAccount.getOwnerName(namePrompt);
     return namePrompt;
 //    newBankAccount(namePrompt);
 })
@@ -135,5 +96,3 @@ $("withdrawal").addEventListener("click", function(){
     var withdrawalPrompt = window.prompt("Please enter withdrawal amount");
     newBankAccount.withdrawal(Number(withdrawalPrompt));
 })
-
-var newBankAccount = new bankAccount(namePrompt);
